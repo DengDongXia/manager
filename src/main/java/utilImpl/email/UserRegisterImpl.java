@@ -34,8 +34,8 @@ public class UserRegisterImpl implements UserRegister
 
 	public boolean sendValidate(String validate, String email)
 	{
-		String title="旅游攻略指南~欢迎用户注册";
-		String context="欢迎来到旅游攻略指南网站，邮箱验证码为: "+validate+"，请尽快完成实现注册哦~";
+		String title="微商团队管理~欢迎用户注册";
+		String context="欢迎使用微商团队系统，邮箱验证码为: "+validate+"，请尽快完成实现注册哦~";
 		return emailHelper.sendEmailToUser(title, context, email);
 	}
 
