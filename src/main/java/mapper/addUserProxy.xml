@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.user.AddUserProxy">
+	
+	<insert id="insertUserProxyMessage" parameterType="domain.user.User">
+		insert into user(email,name,password,quote,pictureURL,proxyState,belong,timestamp) values(#{email},#{name},#{password},#{quote},#{pictureURL},#{proxyState},#{userId},#{timeStamp})
+	</insert>
+	
+	<insert id="insertUserProxyRole" parameterType="domain.user.UserRole">
+		insert into userrole values(#{userID},#{roleID})
+	</insert>
+	
+	<select id="getInsertUserProxyId" parameterType="_int" resultType="_int">
+		select max(id) from user where belong=#{_parameter}
+	</select>
+	
+	<select id="getUserRoleId" parameterType="_int" resultType="_int">
+		select roleID from userrole where userId=#{_parameter}
+	</select>
+	
+</mapper>
+
