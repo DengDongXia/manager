@@ -198,9 +198,9 @@ public class UserController
 	{
 		return getGoodsMessageService.getGoodsMessage(input);
 	}
-	
+/*	
 	@RequstMapping("/isAgentUser")
 	@ResponseBody
 	public 
-	
+	*/
 }
