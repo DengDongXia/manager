@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.goods.AddGoodsAgent">
+	<insert id="addGoodsAgent" parameterType="dto.goods.AddGoodsAgentInput" >
+		insert into goodsorder values(#{goodsId},#{agentUserId},#{account},#{price})
+	</insert>
+	<update id="reduceGoods" parameterType="dto.goods.AddGoodsAgentInput">
+		update goodsorder set account=(select account-#{account} from goodsorder where userId=#{userId} and goodsId=#{goodsId})where userId=#{userId} and goodsId=#{goodsId}
+	</update>
+</mapper>

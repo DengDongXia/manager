@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.goods.SearchGoodsOrder">
+	
+	<select id="getPageNumber" parameterType="dto.goods.SearchGoodsOrderInput" resultType="_int">
+		select CEIL(count(*)/#{showLimt})
+		from goodsorder
+		<where>
+			<choose>
+				<when test="#{type}==1">
+					id=#{condition}
+				</when>
+				<when test="#{type}==2">
+					state=#{condition}
+				</when>
+				<when test="#{type}==3">
+					goodsId=(select id from goods where name=#{condition})
+				</when>
+				<when test="#{type}==4">
+					address=#{condition}
+				</when>
+				<when test="#{type}==5">
+					customerName=#{condition}
+				</when>
+			</choose>
+			and userId=#{userId}
+		</where>
+	</select>
+	
+	<select id="getContent" parameterType="dto.goods.SearchGoodsOrderInput" resultType="dto.goods.SearchGoodsOrderResult">
+		select id,customerName,customerPhone,customerEmail,state,address,dliveryCompany,dliveryId,time,price,goods.name as goodsName
+		from goodsorder inner join goods on goods.id=goodsorder.goodsId
+		<where>
+			<choose>
+				<when test="#{type}==1">
+					id=#{condition}
+				</when>
+				<when test="#{type}==2">
+					state=#{condition}
+				</when>
+				<when test="#{type}==3">
+					goodsId=(select id from goods where name=#{condition})
+				</when>
+				<when test="#{type}==4">
+					address=#{condition}
+				</when>
+				<when test="#{type}==5">
+					customerName=#{condition}
+				</when>
+			</choose>
+			and userId=#{userId}
+		</where>
+		limit #{start},#{showLimt}
+	</select>
+
+</mapper>

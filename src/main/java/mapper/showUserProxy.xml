@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.user.ShowUserProxy">
+	
+	<select id="getPageNumber" parameterType="dto.user.ShowUserProxyMessageInput" resultType="_int">
+		select CEIL(count(*)/#{showLimit})
+		from user
+		<if test="#{roleId}!=1">
+			where belong=#{_parameter}
+		</if>
+	</select>
+	
+	<select id="getProxyUserList" parameterType="dto.user.ShowUserProxyMessageInput" resultType="dto.user.ShowUserProxyMessageResult">
+		select id as userId,email,name,quote,pictureURL,proxyState,locked
+		from user
+		<if test="#{roleId}!=1">
+			where belong=#{_parameter}
+		</if>
+		limit #{start},#{showLimit}
+	</select>
+	
+	<select id="getUserRoleId" parameterType="_int" resultType="_int">
+		select roleID
+		from userrole
+		where userID=#{_parameter}
+	</select>
+	
+</mapper>

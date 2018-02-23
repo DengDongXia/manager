@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.goods.UpdateGoodsOrder">
+	<update id="updateGoodsOrder" parameterType="dto.goods.UpdateGoodsOrderInput" >
+		update goodsorder
+		<set>
+			<if test="#{deliveryCompany}!=null">
+				deliveryCompany=#{deliveryCompany}
+			</if>
+			<if test="#{deliveryId}!=null">
+				,deliveryId=#{deliveryId}
+			</if>
+		</set>
+		where userId=#{userId} and id=#{orderId}
+	</update>
+
+
+</mapper>

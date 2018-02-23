@@ -1,5 +1,8 @@
 package controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,13 +11,28 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import service.AddGoodsAgentService;
+import service.AddGoodsOrderService;
 import service.AddProxyUserService;
+import service.GoodsMessageService;
+import service.SearchGoodsOrderService;
+import service.ShowProxyUserMessageService;
+import service.UpdateGoodsOrderService;
 import service.UserLoginService;
 import service.UserRegisterService;
+import domain.goods.GoodsOrder;
+import domain.user.User;
+import dto.goods.AddGoodsAgentInput;
+import dto.goods.GoodsMessage;
+import dto.goods.GoodsMessageInput;
+import dto.goods.SearchGoodsOrderInput;
+import dto.goods.UpdateGoodsOrderInput;
 import dto.user.AddProxyUserInput;
 import dto.user.AddProxyUserResult;
+import dto.user.ShowUserProxyMessageInput;
 import dto.user.UserLoginInput;
 import dto.user.UserLoginResult;
+import dto.user.UserMessage;
 import dto.user.UserRegisterInput;
 import dto.user.UserRegisterResult;
 
@@ -33,6 +51,19 @@ public class UserController
 	private UserRegisterService userRegisterService;//用户注册的相关的服务类
 	@Autowired
 	private AddProxyUserService addUserProxyService;//用于新增用户代理的相关服务类
+	@Autowired
+	private ShowProxyUserMessageService showProxyService; //用于显示用户新增代理列表的相关服务类
+	@Autowired
+	private AddGoodsOrderService goodsOrderService;//用于用户新增其订单
+	@Autowired
+	private SearchGoodsOrderService searchGoodsOrderService;//用于查找其对应的订单情况
+	@Autowired
+	private UpdateGoodsOrderService updateGoodsOrderService;//用于更新其相应的订单的服务类对象
+	@Autowired
+	private AddGoodsAgentService addGoodsAgentService;//用于添加相应的商品代理的服务类对象
+	@Autowired
+	private GoodsMessageService getGoodsMessageService;//用于获取其相应的商品信息的代理对象
+	
 	
 	@RequestMapping("/login")
 	@ResponseBody
@@ -85,5 +116,91 @@ public class UserController
 		return result;
 	}
 	
+	@RequestMapping("/getUserMessage")
+	@ResponseBody
+	public UserMessage getUserMessage(HttpSession session)
+	{
+		User user=(User)session.getAttribute("user");
+		UserMessage result=new UserMessage();
+		result.setName(user.getName());
+		result.setPictureURL(user.getPictureURL());
+		result.setQuote(user.getQuote());
+		result.setUserId(user.getId());
+		return result;
+	}
+	
+	@RequestMapping("/proxyState")
+	@ResponseBody
+	public Map<String,Boolean> checkUserProxyState(@RequestBody Map<String,Object> input,HttpSession session)
+	{
+		User user=(User)session.getAttribute("user");
+		boolean proxyState=false;
+		if(user!=null)
+			proxyState=user.isProxyState();
+		Map<String,Boolean> result=new HashMap<String,Boolean>();
+		result.put("proxyState",proxyState);
+		return result;
+	}
+	
+	@RequestMapping("/showProxyUserMessage")
+	@ResponseBody
+	public Map<String,Object> showProxyUserList(@RequestBody ShowUserProxyMessageInput input)
+	{
+		Map<String,Object> result=new HashMap<String,Object>();
+		input.setStart();
+		input.setRoleId(showProxyService.getUserRoleId(input.getUserId()));
+		result.put("pageNumber",showProxyService.getPageNumber(input));
+		result.put("content",showProxyService.getContentByInput(input));
+		return result;
+	}
+	
+	@RequestMapping("/addGoodsOrder")
+	@ResponseBody
+	public Map<String,Boolean> addGoodsOrder(@RequestBody GoodsOrder input)
+	{
+		Map<String,Boolean> result=new HashMap<String,Boolean>();
+		result.put("addGoodsOrderResult",goodsOrderService.addGoodsOrder(input));
+		return result;
+	}
+	
+	@RequestMapping("/searchGoodsOrder")
+	@ResponseBody
+	public Map<String,Object> searchGoodsOrder(@RequestBody SearchGoodsOrderInput input)
+	{
+		Map<String,Object> result=new HashMap<String,Object>();
+		input.setStart();
+		result.put("pageNumber", searchGoodsOrderService.getPageNumber(input));
+		result.put("content", searchGoodsOrderService.getContent(input));
+		return result;
+	}
+	
+	@RequestMapping("/updateGoodsOrder")
+	@ResponseBody
+	public Map<String,Boolean> updateGoodsOrderInput(@RequestBody UpdateGoodsOrderInput input)
+	{
+		Map<String,Boolean> result=new HashMap<String,Boolean>();
+		result.put("updateResult",updateGoodsOrderService.updateGoodsOrder(input));
+		return result;
+	}
+	
+	@RequestMapping("/addGoodsAgent")
+	@ResponseBody
+	public Map<String,Object> addGoodsAgent(@RequestBody AddGoodsAgentInput  input)
+	{
+		Map<String,Object> result=new HashMap<String,Object>();
+		result.put("goodsAgentResult",addGoodsAgentService.addGoodsAgent(input));
+		return result;
+	}
+	
+	@RequestMapping("/getGoodsMessage")
+	@ResponseBody
+	public GoodsMessage getGoodsMessage(@RequestBody GoodsMessageInput input)
+	{
+		return getGoodsMessageService.getGoodsMessage(input);
+	}
+	
+	@RequstMapping("/isAgentUser")
+	@ResponseBody
+	public 
 	
 }
