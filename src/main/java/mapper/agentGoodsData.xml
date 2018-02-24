@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.data.AgentGoodsData">
+	<select id="getAgentUserGoodsData" parameterType="_int" resultType="dto.data.AgentGoodsDataResult">
+		SELECT user.id AS agentUserId,user.name AS agentUserName,pictureURL AS agentUserPictureURL,
+		(SELECT 
+			(SELECT SUM(account*price*0.1) FROM goodsagent WHERE userId IN (SELECT id FROM USER WHERE belong=user.id))+
+			(SELECT SUM(price*account) FROM goodsorder WHERE userId=user.id)-
+			(SELECT SUM(account*price) FROM goodsagent WHERE userId=user.id)
+		)AS account,
+		(SELECT SUM(account) FROM goodsorder WHERE goodsorder.userId=user.id) AS goodsNumber
+		FROM USER
+		WHERE user.belong={_parameter}
+	</select>
+</mapper>

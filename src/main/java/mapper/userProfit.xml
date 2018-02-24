@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.user.UserProfit">
+	<select id="getAllSendMoney" parameterType="_int" resultType="_double">
+		select SUM(price*account) as money
+		from goodsorder
+		where userId=#{_parameter}
+	</select>
+	
+	<select id="getAllAgentGoodsMoney" parameterType="_int" resultType="_double">
+		select SUM(account*price) as money
+		from goodsagent
+		where userId=#{_parameter}
+	</select>
+	
+	<select id="getAgentUserGoodsMoney" parameterType="_int" resultType="_double">
+		select SUM(account*price*0.1) as money
+		from goodsagent
+		where userId in (select id from user where belong=#{_parameter})
+	</select>
+	
+</mapper>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.data.GoodsMessageTable">
+	<select id="getGoodsName" parameterType="_int" resultType="string">
+		select name
+		from goods
+		where id=#{_parameter}
+	</select>
+	
+	<select id="getGoodsMessageTable" parameterType="dto.data.ShowGoodsOrderTableInput" resultType="dto.data.ShowGoodsMessageTableResult">
+		select distinct time as time,SUM(account)as number
+		from goodsorder
+		where userId=#{userId} and goodsId=#{goodsId}
+		<if test="#{type}==1||#{type}==2">
+			and YEAR(time)=#{year}
+		</if>
+		group by 
+		<choose>
+			<when test="#{type}==1||#{type}==2">
+				MONTH(time)
+			</when>
+			<when test="#{type}==3">
+				YEAR(time)
+			</when>
+		</choose>
+	</select>
+	
+</mapper>
+
+
+

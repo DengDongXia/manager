@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.user.IsAgentUser">
+	<select id="isAgentUser" parameterType="dto.user.IsAgentInput" resultType="_int">
+		select count(*) 
+		from user
+		where id=#{userId} and belong=#{agentId}
+	</select>
+	
+	<select id="getAgentUserMessage" parameterType="dto.user.IsAgentInput" resultType="domain.user.User">
+		select name,email,quote,pictureURL,locked
+		from user
+		where id=#{agentId}
+	</select>
+	
+</mapper>
+
+

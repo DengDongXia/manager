@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.data.GoodsOrderMessage">
+	<select id="getPageNumber" parameterType="dto.data.ShowGoodsOrderInput" resultType="_int">
+		select CEIL(count(*)/#{showLimit})
+		from 
+		(
+			select count(*)
+			from goodsorder
+			where userId=#{userId}
+			group by goodsId
+		) as sendgoods
+	</select>
+	
+	<select id="getContent" parameterType="dto.data.ShowGoodsOrderInput" resultType="dto.data.SendGoodsMessageResult">
+		select goods.name as goodsName,order1.goodsId as goodsId, 
+		(select SUM(account) from goodsorder where goodsId=order1.goodsId and userId=#{userId})as sendGoods,
+		(select account from goodsagent where userId=#{userId} and goodsId=order1.goodsId)as saveGoods,
+		(select 
+			(SELECT SUM(account*price*0.1) FROM goodsagent WHERE userId IN (SELECT id FROM USER WHERE belong=#{userId}))+
+			(SELECT SUM(price*account) FROM goodsorder WHERE userId=#{userId})-
+			(SELECT SUM(account*price) FROM goodsagent WHERE userId=#{userId})
+		)as account ,
+		(
+			select SUM(account*price) FROM goodsagent WHERE userId=#{userId}
+		)as cost
+		from goodsorder  as order1 inner join goods on goods.id=goodsorder.goodsId
+		where goodsorder.userId=#{userId}
+		group by goodsId
+	</select>
+	
+</mapper>

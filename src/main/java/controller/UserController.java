@@ -14,22 +14,30 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import service.AddGoodsAgentService;
 import service.AddGoodsOrderService;
 import service.AddProxyUserService;
+import service.AgentUserJudgeService;
+import service.CompanyGoodsMessageService;
 import service.GoodsMessageService;
 import service.SearchGoodsOrderService;
 import service.ShowProxyUserMessageService;
+import service.UpdateAgentStateService;
 import service.UpdateGoodsOrderService;
 import service.UserLoginService;
+import service.UserProfitService;
 import service.UserRegisterService;
 import domain.goods.GoodsOrder;
 import domain.user.User;
 import dto.goods.AddGoodsAgentInput;
+import dto.goods.CompanyGoodsInput;
 import dto.goods.GoodsMessage;
 import dto.goods.GoodsMessageInput;
 import dto.goods.SearchGoodsOrderInput;
 import dto.goods.UpdateGoodsOrderInput;
 import dto.user.AddProxyUserInput;
 import dto.user.AddProxyUserResult;
+import dto.user.AgentUserMessage;
+import dto.user.IsAgentInput;
 import dto.user.ShowUserProxyMessageInput;
+import dto.user.UpdateAgentInput;
 import dto.user.UserLoginInput;
 import dto.user.UserLoginResult;
 import dto.user.UserMessage;
@@ -63,6 +71,14 @@ public class UserController
 	private AddGoodsAgentService addGoodsAgentService;//用于添加相应的商品代理的服务类对象
 	@Autowired
 	private GoodsMessageService getGoodsMessageService;//用于获取其相应的商品信息的代理对象
+	@Autowired
+	private AgentUserJudgeService agentUserJudgeService;//用于判断其是否为对应的用户的服务类对象
+	@Autowired
+	private UpdateAgentStateService updateAgentStateService;//用于更新其代理的账号情况和代理情况的服务类对象
+	@Autowired
+	private UserProfitService userProfitService;//用于获取其用户所对应的利润的服务类
+	@Autowired
+	private CompanyGoodsMessageService companyGoodsMessageService;//用于用户添加其相应的商品的信息
 	
 	
 	@RequestMapping("/login")
@@ -198,9 +214,40 @@ public class UserController
 	{
 		return getGoodsMessageService.getGoodsMessage(input);
 	}
-/*	
-	@RequstMapping("/isAgentUser")
+	
+	@RequestMapping("/isAgentUser")
 	@ResponseBody
-	public 
-	*/
+	public AgentUserMessage judgeIsAgentUser(@RequestBody IsAgentInput input)
+	{
+		return agentUserJudgeService.isAgentUser(input);
+	}
+	
+	@RequestMapping("/updateAgentState")
+	@ResponseBody
+	public Map<String,Boolean> updateAgentState(@RequestBody UpdateAgentInput input)
+	{
+		Map<String,Boolean> result=new HashMap<String,Boolean>();
+		result.put("updateResult", updateAgentStateService.updateAgentState(input));
+		return result;
+	}
+	
+	@RequestMapping("/getUserProfit")
+	@ResponseBody
+	public Map<String,Double> getUserProfit(@RequestBody Map<String,Object> Id)
+	{
+		int userId=(Integer)Id.get("userId");
+		Map<String,Double> result=new HashMap<String,Double>();
+		result.put("account",userProfitService.getUserAccountProfit(userId));
+		return result;
+	}
+	
+	@RequestMapping("/addCompanyGoodsMessage")
+	@ResponseBody
+	public Map<String,Boolean> addCompanyGoodsMessage(@RequestBody CompanyGoodsInput input)
+	{
+		Map<String,Boolean> result=new HashMap<String,Boolean>();
+		result.put("addResult",companyGoodsMessageService.addGoodsMessage(input));
+		return result;
+	}
+	
 }
