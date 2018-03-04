@@ -1,0 +1,219 @@
+@charset 'utf-8';
+/*用户信息*/
+.userInfo{
+	width: 20%;
+	float: left;
+	padding: 50px 40px 0 40px;
+}
+
+.userInfo p{
+	text-align: center;
+	line-height: 35px;
+	color: #444;
+}
+
+.userInfo p:last-child{
+	margin-top: 10px;
+}
+
+.identify{
+	color: #ff8b20;
+	font-size: 18px;
+}
+
+/*头像部分*/
+.imgBg{
+	display: inline-block;
+	width: 150px;
+	height: 150px;
+	overflow: hidden;
+	border-radius: 4px;
+}
+
+.imgBg img{
+	width: auto;
+	height: 100%;
+}
+/*头像部分*/
+
+#add{
+	display: inline-block;
+	width: auto;
+	height: 35px;
+	line-height: 35px;
+	padding: 5px 20px;
+	border: 1px solid #1ebbd4;
+	border-radius: 4px;
+	color: #1ebbd4;
+	cursor: pointer;
+}
+
+#add:hover{
+	color: #fff;
+	background-color: #1ebbd4;
+}
+/*用户信息*/
+
+/*相关功能*/
+.funInfo{
+	width: 73%;
+	display: inline-block;
+	min-height: 500px;
+	border-left: 1px solid #ececec;
+}
+
+#fun{
+	box-shadow: 0 1px 1px 1px #ececec;
+}
+
+#fun span{
+	display: inline-block;
+	padding: 5px 20px;
+	height: 50px;
+	line-height: 50px;
+	cursor: pointer;
+}
+
+.choose{
+	color: #fff;
+	background-color: #1ebbd4;
+	border-radius: 4px 4px 0 0;
+}
+
+.info span{
+	display: inline-block;
+	width: 16.1%;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.title{
+	height: 40px;
+	line-height: 40px;
+	font-weight: bold;
+	border-bottom: 1px solid #ececec;
+}
+
+.info li{
+	list-style: none;
+	border-bottom: 1px solid #ececec;
+	padding: 10px 1px;
+}
+
+.name,.quote{
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+.url{
+	display: inline-block;
+	width: 50px;
+	height: 50px;
+	vertical-align: middle;
+	overflow: hidden;
+}
+
+.url img{
+	height: 100%;
+	width: auto;
+}
+
+.info .profit,.info .count{
+	width: 20%;
+}
+/*相关功能*/
+
+/*遮罩层新增厂商*/
+.main{
+	position: relative;
+}
+
+.addBg{
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,0.5);
+}
+
+.addTitle{
+	font-size: 20px;
+	color: #444;
+	padding-bottom: 10px;
+	margin-bottom: 10px;
+	border-bottom: 1px solid #ececec;
+}
+
+.addForm{
+	width: 500px;
+	margin: 120px auto;
+	padding: 30px;
+	background-color: #fff;
+	border-radius: 4px;
+}
+
+.addForm p{
+	text-align: center;
+}
+
+.addForm p input{
+	width: 270px;
+	height: 35px;
+	line-height: 35px;
+	margin: 5px auto;
+	padding: 3px 20px;
+	border: 1px solid #ececec;
+	border-radius: 4px;
+
+}
+
+.checkBg{
+	text-align: center;
+}
+
+#check{
+	width: 20px;
+	margin: 0 5px;
+	display: inline-block;
+	vertical-align: middle;
+	cursor: pointer;
+}
+
+#submitForm{
+	width: 310px;
+	height: 45px;
+	background-color: #fff;
+	border: 1px solid #ff8b20;
+	color: #ff8b20;
+	font-size: 16px;
+}
+
+#submitForm:hover{
+	color: #fff;
+	background-color: #ff8b20;
+}
+/*遮罩层新增厂商*/
+
+/*按钮部分样式*/
+.switchPage{
+	text-align: center;
+}
+
+.switchPage span{
+	display: inline-block;
+	width: auto;
+	margin: 15px 10px;
+	padding: 5px 10px;
+	border: 1px solid #ececec;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+.switchPage span:hover{
+	color: #1ebbd4;
+	border-color: #1ebbd4;
+}
+/*按钮部分样式*/

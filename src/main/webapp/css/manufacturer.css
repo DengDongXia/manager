@@ -1,0 +1,355 @@
+@charset 'utf-8';
+
+/*头像部分*/
+.headImgbg{
+	text-align: center;
+}
+
+.imgBg{
+	display: inline-block;
+	width: 120px;
+	height: 120px;
+	overflow: hidden;
+	border-radius: 4px;
+}
+
+.imgBg img{
+	width: auto;
+	height: 100%;
+	float: left;
+}
+
+.identify{
+	color: #ff8b20;
+	font-size: 20px;
+}
+/*头像部分*/
+
+/*用户信息*/
+.userInfo{
+	position: relative;
+}
+
+.userPic{
+	width: 21%;
+	padding-top: 4%;
+	padding-bottom: 1%;
+	float: left;
+}
+
+.userPic p{
+	text-align: center;
+	line-height: 35px;
+}
+
+.userText{
+	display: inline-block;
+	padding-top: 70px;
+	font-size: 16px;
+	color: #444;
+	/*min-height: 226px;*/
+}
+
+.userText p{
+	line-height: 35px;
+}
+
+.userName{
+	font-weight: bold;
+	font-size: 18px;
+}
+
+.statusBg span{
+	font-size: 18px;	
+}
+
+.add{
+	margin-top: 10px;
+}
+
+.add span{
+	display: inline-block;
+	padding: 3px 10px;
+	border: 1px solid #1ebbd4;
+	border-radius: 4px;
+	color: #1ebbd4;
+	cursor: pointer;
+}
+
+.add span:hover{
+	color: #fff;
+	background-color: #1ebbd4;
+}
+
+#addAgent{
+	margin-right: 20px;
+}
+
+.goodOrder{
+	position: absolute;
+	top: 70px;
+	right: 150px;
+	width: 100px;
+	height: 130px;
+	display: inline-block;
+	color: #999;
+	cursor: pointer;
+}
+
+.goodOrder a{
+	color: #999;
+	text-decoration: none;
+}
+
+.goodOrder:hover a{
+	color: #ff8b20;
+}
+
+.goodOrder .orderLogo{
+	width: 100px;
+	height: 100px;
+	background: url('../images/order.png') no-repeat;
+	background-size: 100px;
+}
+
+.goodOrder:hover .orderLogo{
+	background: url('../images/orderO.png') no-repeat;
+	background-size: 100px;
+}
+
+/*用户信息*/
+
+/*功能部分*/
+.funInfo{
+	width: 100%;
+	clear: both;
+	border-top: 20px solid #f3f5f7;
+	padding-bottom: 30px;
+}
+
+#fun{
+	box-shadow: 0 1px 1px 1px #ececec;
+}
+
+#fun span{
+	display: inline-block;
+	padding: 5px 20px;
+	height: 50px;
+	line-height: 50px;
+	cursor: pointer;
+}
+
+.choose{
+	color: #fff;
+	background-color: #1ebbd4;
+	border-radius: 4px 4px 0 0;
+}
+
+.info span{
+	display: inline-block;
+	width: 11%;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.liBg p{
+	padding: 5px 0;
+	line-height: 50px;
+	font-weight: bold;
+	border: 1px solid #ececec;
+}
+
+.liBg li{
+	padding: 15px 0;
+	list-style: none;
+	border: 1px solid #ececec;
+}
+
+.liBg li:hover{
+	background-color: #ececec;
+}
+
+.info .email,.info .status{
+	width: 17%;
+}
+
+.info .status{
+	display: inline-block;
+	margin: auto 10px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+.info .number,.info .name{
+	width: 14%;
+}
+
+.info li .opera{
+	color: #1ebbd4;
+	cursor: pointer;
+}
+
+.info li .opera:hover{
+	color: #ff8b20;
+}
+
+.liBg .imgBg{
+	width: 50px;
+	height: 50px;
+	border-radius: 50px;
+}
+
+.power label,.status label{
+	cursor: pointer;
+}
+
+.power label:hover,.status label:hover{
+	color: #ff8b20; 
+}
+
+.liBg .choosePemit:hover,.liBg .chooseStatus:hover{
+	color: #fff;
+}
+
+.liBg .choosePemit,.liBg .chooseStatus{
+	display: inline-block;
+	margin: 0 8px;
+	padding: 5px 8px;
+	background-color: #ff8b20;
+	color: #fff;
+	border-radius: 4px;
+	cursor: default;
+}
+
+.sell span{
+	width: 20%;
+}
+/*查看下级代理用户*/
+
+/*功能部分*/
+
+/*遮罩层*/
+.main{
+	position: relative;
+}
+
+.addBg{
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,0.5);
+}
+
+.addTitle{
+	font-size: 20px;
+	color: #444;
+	padding-bottom: 10px;
+	margin-bottom: 10px;
+	border-bottom: 1px solid #ececec;
+}
+
+.addForm{
+	width: 500px;
+	margin: 150px auto;
+	padding: 30px;
+	background-color: #fff;
+	border-radius: 4px;
+}
+
+.addForm p{
+	text-align: center;
+}
+
+.addForm p input{
+	width: 270px;
+	height: 35px;
+	line-height: 35px;
+	margin: 5px auto;
+	padding: 3px 20px;
+	border: 1px solid #ececec;
+	border-radius: 4px;
+
+}
+
+.checkBg{
+	text-align: center;
+}
+
+#check{
+	width: 20px;
+	margin: 0 5px;
+	display: inline-block;
+	vertical-align: middle;
+	cursor: pointer;
+}
+
+.addForm .submitForm{
+	width: 310px;
+	height: 45px;
+	background-color: #fff;
+	border: 1px solid #ff8b20;
+	color: #ff8b20;
+	font-size: 16px;
+}
+
+.addForm .submitForm:hover{
+	color: #fff;
+	background-color: #ff8b20;
+}
+/*遮罩层*/
+
+/*遮罩层新增一级代理*/
+#adduserBg{
+	/*display: block;*/
+}
+
+/*遮罩层新增商品信息*/
+#addgoodsBg{
+	/*display: block;*/
+}
+
+/*遮罩层分配商品信息给下级代理*/
+#allotBg{
+	/*display: block;	*/
+}
+
+.allotUserId{
+	text-align: left;
+	line-height: 38px;
+}
+
+.allotUserId span{
+	display: inline-block;
+	width: 310px;
+	text-align: left;
+}
+/*遮罩层分配商品信息给下级代理*/
+
+/*按钮部分样式*/
+.liBg .switchPage{
+	text-align: center;
+	font-weight: normal;
+	border: none;
+}
+
+.switchPage span{
+	display: inline-block;
+	width: auto;
+	line-height: 30px;
+	margin: 15px 10px;
+	padding: 5px 10px;
+	border: 1px solid #ececec;
+	border-radius: 4px;
+	font-weight: normal;
+	cursor: pointer;
+}
+
+.switchPage span:hover{
+	color: #1ebbd4;
+	border-color: #1ebbd4;
+}
+/*按钮部分样式*/

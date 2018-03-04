@@ -1,0 +1,50 @@
+@charset 'utf-8';
+#content{
+	padding-top: 10px;
+}
+
+#content p{
+	padding-left: 70px;
+	margin: 15px 0;
+}
+
+#searchFilter,#checkButton{
+	display: inline-block;
+	width: 300px;
+	height: 30px;
+	line-height: 30px;
+	padding: 2px 20px;
+	font-size: 16px;
+	border: 1px solid #aaaaaa;
+	border-radius: 4px;
+}
+
+.label{
+	display: inline-block;
+	width: 100px;
+	text-align: right;
+}
+
+#checkButton{
+	width: auto;
+	cursor: pointer;
+	color: #1ebbd4;
+	border-color: #1ebbd4;
+}
+
+#checkButton:hover{
+	color: #ff8b20;
+	border-color: #ff8b20;
+}
+
+#sel{
+	width: 100px;
+	height: 35px;
+	line-height: 35px;
+	padding: 2px 10px;
+}
+
+.typeBg label{
+	display: inline-block;
+	margin-right: 20px;
+}

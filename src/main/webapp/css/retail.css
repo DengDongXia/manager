@@ -1,0 +1,123 @@
+@charset 'utf-8';
+.userContent{
+	min-height: 227px;
+}
+
+/*头像部分*/
+.headImgbg{
+	text-align: center;
+}
+
+.imgBg{
+	display: inline-block;
+	width: 120px;
+	height: 120px;
+	overflow: hidden;
+	border-radius: 4px;
+}
+
+.imgBg img{
+	width: auto;
+	height: 100%;
+	float: left;
+}
+
+.identify{
+	color: #ff8b20;
+	font-size: 20px;
+}
+/*头像部分*/
+
+/*用户信息*/
+.userInfo{
+	position: relative;
+}
+
+.userPic{
+	width: 21%;
+	padding-top: 4%;
+	padding-bottom: 1%;
+	float: left;
+}
+
+.userPic p{
+	text-align: center;
+	line-height: 35px;
+}
+
+.userText{
+	display: inline-block;
+	padding-top: 70px;
+	font-size: 16px;
+	color: #444;
+	/*min-height: 226px;*/
+}
+
+.userText p{
+	line-height: 35px;
+}
+
+.userName{
+	font-weight: bold;
+	font-size: 18px;
+}
+
+.quoteBg span{
+	font-size: 18px;	
+}
+
+.add{
+	margin-top: 10px;
+}
+
+.add span{
+	display: inline-block;
+	padding: 3px 10px;
+	border: 1px solid #1ebbd4;
+	border-radius: 4px;
+	color: #1ebbd4;
+	cursor: pointer;
+}
+
+.add span:hover{
+	color: #fff;
+	background-color: #1ebbd4;
+}
+
+#addAgent{
+	margin-right: 20px;
+}
+
+.goodOrder{
+	position: absolute;
+	top: 70px;
+	right: 150px;
+	width: 100px;
+	height: 130px;
+	display: inline-block;
+	color: #999;
+	cursor: pointer;
+}
+
+.goodOrder a{
+	color: #999;
+	text-decoration: none;
+}
+
+.goodOrder:hover a{
+	color: #ff8b20;
+}
+
+.goodOrder .orderLogo{
+	width: 100px;
+	height: 100px;
+	background: url('../images/order.png') no-repeat;
+	background-size: 100px;
+}
+
+.goodOrder:hover .orderLogo{
+	background: url('../images/orderO.png') no-repeat;
+	background-size: 100px;
+}
+
+/*用户信息*/

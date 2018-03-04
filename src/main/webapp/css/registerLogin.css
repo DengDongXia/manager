@@ -1,0 +1,88 @@
+@charset 'utf-8';
+*{
+	margin: 0;
+	padding: 0;
+}
+input{
+	margin: 0;
+	padding: 0;
+}
+
+body{
+	background-color: #f3f5f7;
+}
+
+/*表单主体部分*/
+.main{
+	width: 500px;
+	margin: 100px auto;
+	background-color: #fff;
+	padding: 30px 20px;
+	border-radius: 4px;
+}
+
+.main p{
+	width: 100%;
+	text-align: center;
+	color: #444;
+}
+.title{
+	color: #1ebbd4;
+	font-size: 24px;
+}
+
+.input{
+	width: 60%;
+}
+
+.input,.Vinput{
+	height: 35px;
+	padding: 4px 20px;
+	margin-top: 10px;
+	line-height: 35px;
+	border-radius: 4px;
+	border: 1px solid #ececec;
+}
+
+.Vinput{
+	display: inline-block;
+	width: 24%;
+	margin-left: 5px;
+}
+
+#ok{
+	width: 68%;
+	height: 41px;
+	margin-top: 10px;
+	background-color: #1ebbd4;
+	color: #fff;
+	cursor: pointer;
+	border-radius: 4px;
+	border: none;
+	font-size: 16px;
+}	
+
+.other{
+	margin-top: 10px;
+}
+
+.other a{
+	text-decoration: none;
+	color: #444;
+}
+
+.other a:hover{
+	color: #1ebbd4;
+}
+
+#getPicVerification{
+	width: 28%;
+	height: 43px;
+	background-color: #fff;
+	border: 1px solid #ececec;
+	cursor: pointer;
+}
+
+.error{
+	line-height: 38px;
+}
