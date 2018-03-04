@@ -30,8 +30,8 @@
     }
 
     $.ajax({
-			// url: 'data/login.json',
-			url: 'http://localhost:8080/manager/user/login',
+			url: 'data/login.json',
+			// url: 'http://localhost:8080/manager/user/login',
 			type: 'POST',
 			dataType: 'json',
 			contentType:'application/json',
@@ -54,13 +54,13 @@
 					$("#password").parent().append(text);
 				}
 				else if(data.validateCodeResult == false){
-				    $("#verification").find(".error").remove();
+				    $(".verBg").find(".error").remove();
 					text += "<span>验证码错误</span></div>";
-					$("#verification").parent().append(text);
+					$(".verBg").append(text);
 				}else if(data.accountState == false){
-					$("#verification").find(".error").remove();
+					$(".verBg").find(".error").remove();
 					text += "<span>该账号尚未通过审核</span></div>";
-					$("#verification").parent().append(text);
+					$(".verBg").append(text);
 				}
 				else{
 					alert("登录成功！");

@@ -53,7 +53,8 @@ $(function(){
 
     //验证验证码
     if( $(this).is('#verification') ){	
-    	$parent.find(".error").remove();    
+    	 $(".verBg").find(".error").remove();
+    	// $parent.find(".error").remove();    
 		if (element == "" || element == null) {
 			text = text_pic+"<span>验证码不能为空！</span>";
 			$parent.append(text+"</div>");   //插入html语句
